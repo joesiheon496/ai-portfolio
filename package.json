@@ -2,7 +2,7 @@
   "name": "ai-portfolio",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://josiheon496.github.io/ai-portfolio",
+  "homepage": "https://joesiheon496.github.io/ai-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
