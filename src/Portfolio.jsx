@@ -41,7 +41,7 @@ const projects = [
 
 const skills = [
   "Python", "PyTorch", "TensorFlow", "Huggingface Transformers", "Unity",
-  "Docker", "Git", "SQL", "Pandas"
+  "Docker", "Git", "SQL", "Pandas", "PLC"
 ];
 
 const research = [
