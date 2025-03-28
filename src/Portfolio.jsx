@@ -26,6 +26,16 @@ const projects = [
     description: "혈액 면역 세포와, 동일병변 암 세포 크기 비교를 통한 암진단",
     tags: ["nnUNet", "Normalized cross correlation", "VoxelMorph"],
     link: "https://github.com/joesiheon496/Organize_information/blob/master/Tiimbio/%EA%B3%A0%EB%8C%80%EA%B5%AC%EB%A1%9C.pdf"
+  },
+  {
+    title: "항만 샤시 자동화 작업",
+    description: `- LiDAR 기반 컨테이너 자동 제어 시스템 개발에 참여하여 알고리즘 설계 및 구현 담당
+    - 섀시 인식 및 좌표 추출을 위한 포인트 클라우드 처리 알고리즘을 Python으로 구현
+    - 공간 분석 알고리즘 리서치 및 적용 후보 기술 선별
+    - Siemens PLC와의 이더넷 통신 프로토콜을 테스트하고, 실시간 좌표 송신 로직 개발
+    - Unity 시뮬레이션 환경을 활용한 알고리즘 검증 및 성능 실험 수행`,
+    tags: ["nnUNet", "Normalized cross correlation", "VoxelMorph"],
+    link: "https://github.com/joesiheon496/Organize_information/blob/master/Tiimbio/%EA%B3%A0%EB%8C%80%EA%B5%AC%EB%A1%9C.pdf"
   }
 ];
 
