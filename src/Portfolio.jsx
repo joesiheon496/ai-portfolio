@@ -120,7 +120,7 @@ export default function Portfolio() {
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-medium">{project.title}</h3>
                 <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm">GitHub</Button>
+                  <Button variant="outline" size="sm">Link</Button>
                 </a>
               </div>
               <p className="text-sm text-gray-600">{project.description}</p>
