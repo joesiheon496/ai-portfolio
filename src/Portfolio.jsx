@@ -29,12 +29,12 @@ const projects = [
   },
   {
     title: "항만 샤시 자동화 작업",
-    description: `- LiDAR 기반 컨테이너 자동 제어 시스템 개발에 참여하여 알고리즘 설계 및 구현 담당
-- 섀시 인식 및 좌표 추출을 위한 포인트 클라우드 처리 알고리즘을 Python으로 구현
-- 공간 분석 알고리즘 리서치 및 적용 후보 기술 선별
-- Siemens PLC와의 이더넷 통신 프로토콜을 테스트하고, 실시간 좌표 송신 로직 개발
+    description: `- LiDAR 기반 컨테이너 자동 제어 시스템 개발에 참여하여 알고리즘 설계 및 구현 담당\n
+- 섀시 인식 및 좌표 추출을 위한 포인트 클라우드 처리 알고리즘을 Python으로 구현\n
+- 공간 분석 알고리즘 리서치 및 적용 후보 기술 선별\n
+- Siemens PLC와의 이더넷 통신 프로토콜을 테스트하고, 실시간 좌표 송신 로직 개발\n
 - Unity 시뮬레이션 환경을 활용한 알고리즘 검증 및 성능 실험 수행`,
-    tags: ["Python", "LiDAR", "PLC", "Unity"],
+    tags: ["Python", "LiDAR", "PLC", "Unity","Point Cloud"],
     link:"https://github.com/joesiheon496/Organize_information/blob/master/%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf"
   }
 ];
@@ -102,133 +102,149 @@ export default function Portfolio() {
       )
     : projects;
 
-  return (
-    <div className="max-w-4xl mx-auto p-6 space-y-10">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-bold">Portfolio</h1>
-        <p className="text-muted-foreground">
-          딥러닝 기반 문제 해결에 집중하는 개발자입니다. 실험과 서비스 구현 사이의 연결고리를 만듭니다.
-        </p>
-      </header>
 
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">About</h2>
-        <p className="text-sm text-gray-700">
-          AI 모델 설계와 실험, MLOps 환경 구성, 서비스화까지 전주기에 걸쳐 경험을 쌓아왔습니다.
-          모델 성능뿐만 아니라 실제 사용자 환경에서의 적용성과 유지보수까지 고려합니다.
-        </p>
-        <p className="text-sm text-gray-700">
-          최근에는 멀티모달 학습과 경량화 모델, 그리고 실시간 AI 시스템 개발에 관심을 가지고 연구 및 구현 중입니다.
-        </p>
-      </section>
-
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">Skills</h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill, idx) => (
-            <span key={idx} className="text-xs bg-gray-100 px-2 py-1 rounded">
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* 태그 필터 입력창 추가 */}
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Projects</h2>
-        <div className="mb-4">
-          <input 
-            type="text"
-            placeholder="태그로 필터링 (예: Python)"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="border border-gray-300 rounded px-3 py-1 w-full"
-          />
-        </div>
-        {filteredProjects.map((project, idx) => (
-          <Card key={idx} className="border border-gray-200">
-            <CardContent className="p-4 space-y-2">
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-medium">{project.title}</h3>
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm">Link</Button>
-                </a>
-              </div>
-              <p className="text-sm text-gray-600">{project.description}</p>
-              <div className="flex gap-2 flex-wrap">
-                {project.tags.map((tag, i) => (
-                  <span key={i} className="text-xs bg-gray-100 px-2 py-1 rounded">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Research & Experiments</h2>
-        {research.map((item, idx) => (
-          <Card key={idx} className="border border-gray-200">
-            <CardContent className="p-4 space-y-1">
-              <div className="flex justify-between items-center">
-                <h3 className="text-md font-medium">{item.title}</h3>
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm">GitHub</Button>
-                </a>
-              </div>
-              <p className="text-sm text-gray-600">{item.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Publications</h2>
-        {Publications.map((pub, idx) => (
-          <Card key={idx} className="border border-gray-200">
-            <CardContent className="p-4 space-y-1">
-              <div className="flex justify-between items-center">
-                <h3 className="text-md font-medium">{pub.title}</h3>
-                <a href={pub.link} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm">View</Button>
-                </a>
-              </div>
-              <p className="text-sm text-gray-700"><strong>저자:</strong> {pub.authors}</p>
-              <p className="text-sm text-gray-700"><strong>공저자:</strong> {pub.coAuthors}</p>
-              <p className="text-sm text-gray-700"><strong>교신저자:</strong> {pub.correspondingAuthor}</p>
-              <p className="text-sm text-gray-700">
-                <strong>출판:</strong> {pub.journal}
-                {pub.volume && `, Vol. ${pub.volume}`} 
-                {pub.issue && `, No. ${pub.issue}`}
-                , pp. {pub.pages}, {pub.year}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Award</h2>
-        {Award.map((award, idx) => (
-          <Card key={idx} className="border border-gray-200">
-            <CardContent className="p-4 space-y-1">
-              <div className="flex justify-between items-center">
-                <h3 className="text-md font-medium">{award.title}</h3>
-                <a href={award.link} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm">GitHub</Button>
-                </a>
-              </div>
-              <p className="text-sm text-gray-600">{award.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </section>
-
-      <footer className="pt-6 border-t text-sm text-center text-gray-400">
-        Contact: josehan1234@gmail.com · GitHub: @joesiheon496
-      </footer>
-    </div>
-  );
-}
+    return (
+      <div className="flex">
+        {/* 좌측 사이드바 */}
+        <aside className="w-64 p-4 border-r">
+          <nav className="flex flex-col space-y-3">
+            <button onClick={() => scrollToSection("about")} className="text-left">About</button>
+            <button onClick={() => scrollToSection("skills")} className="text-left">Skills</button>
+            <button onClick={() => scrollToSection("projects")} className="text-left">Projects</button>
+            <button onClick={() => scrollToSection("research")} className="text-left">Research & Experiments</button>
+            <button onClick={() => scrollToSection("publications")} className="text-left">Publications</button>
+            <button onClick={() => scrollToSection("award")} className="text-left">Award</button>
+            <button onClick={() => scrollToSection("contact")} className="text-left">Contact</button>
+          </nav>
+        </aside>
+  
+        {/* 메인 컨텐츠 영역 */}
+        <main className="flex-1 p-6 space-y-10">
+          <header id="about" className="space-y-2">
+            <h1 className="text-3xl font-bold">Portfolio</h1>
+            <p className="text-muted-foreground">
+              딥러닝 기반 문제 해결에 집중하는 개발자입니다. 실험과 서비스 구현 사이의 연결고리를 만듭니다.
+            </p>
+          </header>
+  
+          <section id="about" className="space-y-2">
+            <h2 className="text-xl font-semibold">About</h2>
+            <p className="text-sm text-gray-700">
+              AI 모델 설계와 실험, MLOps 환경 구성, 서비스화까지 전주기에 걸쳐 경험을 쌓아왔습니다.
+              모델 성능뿐만 아니라 실제 사용자 환경에서의 적용성과 유지보수까지 고려합니다.
+            </p>
+            <p className="text-sm text-gray-700">
+              최근에는 멀티모달 학습과 경량화 모델, 그리고 실시간 AI 시스템 개발에 관심을 가지고 연구 및 구현 중입니다.
+            </p>
+          </section>
+  
+          <section id="skills" className="space-y-2">
+            <h2 className="text-xl font-semibold">Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill, idx) => (
+                <span key={idx} className="text-xs bg-gray-100 px-2 py-1 rounded">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
+  
+          <section id="projects" className="space-y-4">
+            <h2 className="text-xl font-semibold">Projects</h2>
+            <div className="mb-4">
+              <input 
+                type="text"
+                placeholder="태그로 필터링 (예: Python)"
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+                className="border border-gray-300 rounded px-3 py-1 w-full"
+              />
+            </div>
+            {filteredProjects.map((project, idx) => (
+              <Card key={idx} className="border border-gray-200">
+                <CardContent className="p-4 space-y-2">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-medium">{project.title}</h3>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm">Link</Button>
+                    </a>
+                  </div>
+                  <p className="text-sm text-gray-600">{project.description}</p>
+                  <div className="flex gap-2 flex-wrap">
+                    {project.tags.map((tag, i) => (
+                      <span key={i} className="text-xs bg-gray-100 px-2 py-1 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </section>
+  
+          <section id="research" className="space-y-4">
+            <h2 className="text-xl font-semibold">Research & Experiments</h2>
+            {research.map((item, idx) => (
+              <Card key={idx} className="border border-gray-200">
+                <CardContent className="p-4 space-y-1">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-md font-medium">{item.title}</h3>
+                    <a href={item.link} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm">GitHub</Button>
+                    </a>
+                  </div>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </section>
+  
+          <section id="publications" className="space-y-4">
+            <h2 className="text-xl font-semibold">Publications</h2>
+            {Publications.map((pub, idx) => (
+              <Card key={idx} className="border border-gray-200">
+                <CardContent className="p-4 space-y-1">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-md font-medium">{pub.title}</h3>
+                    <a href={pub.link} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm">View</Button>
+                    </a>
+                  </div>
+                  <p className="text-sm text-gray-700"><strong>저자:</strong> {pub.authors}</p>
+                  <p className="text-sm text-gray-700"><strong>공저자:</strong> {pub.coAuthors}</p>
+                  <p className="text-sm text-gray-700"><strong>교신저자:</strong> {pub.correspondingAuthor}</p>
+                  <p className="text-sm text-gray-700">
+                    <strong>출판:</strong> {pub.journal}
+                    {pub.volume && `, Vol. ${pub.volume}`} 
+                    {pub.issue && `, No. ${pub.issue}`}
+                    , pp. {pub.pages}, {pub.year}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </section>
+  
+          <section id="award" className="space-y-4">
+            <h2 className="text-xl font-semibold">Award</h2>
+            {Award.map((award, idx) => (
+              <Card key={idx} className="border border-gray-200">
+                <CardContent className="p-4 space-y-1">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-md font-medium">{award.title}</h3>
+                    <a href={award.link} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm">GitHub</Button>
+                    </a>
+                  </div>
+                  <p className="text-sm text-gray-600">{award.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </section>
+  
+          <footer id="contact" className="pt-6 border-t text-sm text-center text-gray-400">
+            Contact: josehan1234@gmail.com · GitHub: @joesiheon496
+          </footer>
+        </main>
+      </div>
+    );
+  }
