@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 
@@ -29,12 +29,13 @@ const projects = [
   },
   {
     title: "항만 샤시 자동화 작업",
-    description: `- LiDAR 기반 컨테이너 자동 제어 시스템 개발에 참여하여 알고리즘 설계 및 구현 담당\n
-    - 섀시 인식 및 좌표 추출을 위한 포인트 클라우드 처리 알고리즘을 Python으로 구현\n
-    - 공간 분석 알고리즘 리서치 및 적용 후보 기술 선별\n
-    - Siemens PLC와의 이더넷 통신 프로토콜을 테스트하고, 실시간 좌표 송신 로직 개발\n
-    - Unity 시뮬레이션 환경을 활용한 알고리즘 검증 및 성능 실험 수행`,
+    description: `- LiDAR 기반 컨테이너 자동 제어 시스템 개발에 참여하여 알고리즘 설계 및 구현 담당
+- 섀시 인식 및 좌표 추출을 위한 포인트 클라우드 처리 알고리즘을 Python으로 구현
+- 공간 분석 알고리즘 리서치 및 적용 후보 기술 선별
+- Siemens PLC와의 이더넷 통신 프로토콜을 테스트하고, 실시간 좌표 송신 로직 개발
+- Unity 시뮬레이션 환경을 활용한 알고리즘 검증 및 성능 실험 수행`,
     tags: ["Python", "LiDAR", "PLC", "Unity"],
+    link:"https://github.com/joesiheon496/Organize_information/blob/master/%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf"
   }
 ];
 
@@ -90,6 +91,17 @@ const Publications = [
 ];
 
 export default function Portfolio() {
+  const [filter, setFilter] = useState("");
+  
+  // 태그 필터링 (대소문자 구분 없이)
+  const filteredProjects = filter 
+    ? projects.filter(project =>
+        project.tags.some(tag =>
+          tag.toLowerCase().includes(filter.toLowerCase())
+        )
+      )
+    : projects;
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-10">
       <header className="space-y-2">
@@ -121,9 +133,19 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* 태그 필터 입력창 추가 */}
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Projects</h2>
-        {projects.map((project, idx) => (
+        <div className="mb-4">
+          <input 
+            type="text"
+            placeholder="태그로 필터링 (예: Python)"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="border border-gray-300 rounded px-3 py-1 w-full"
+          />
+        </div>
+        {filteredProjects.map((project, idx) => (
           <Card key={idx} className="border border-gray-200">
             <CardContent className="p-4 space-y-2">
               <div className="flex justify-between items-center">
